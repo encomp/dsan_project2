@@ -1,0 +1,21 @@
+@startuml
+User -> LruCache: set(key, value)
+LruCache --> LruCache : size()
+LruCache --> LruCache : capacity()
+LruCache -> DoubleLinkedList :remove_last_element(node)
+LruCache <-- DoubleLinkedList :return node
+LruCache -> Node :get_key()
+LruCache <-- Node :return key
+LruCache -> HashMap :remove(key)
+LruCache <-- HashMap :return True
+LruCache -> HashMap :get(key)
+LruCache <-- HashMap :return None
+LruCache -> Node :Node(value)
+LruCache <-- Node :new node
+LruCache -> Node :set_key(key)
+LruCache -> HashMap :put(key, node)
+LruCache <-- HashMap :return True
+LruCache -> DoubleLinkedList :insert_node_at_front(node)
+LruCache <-- DoubleLinkedList :return True
+User <-- LruCache: return True
+@enduml

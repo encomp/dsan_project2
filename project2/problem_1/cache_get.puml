@@ -1,0 +1,12 @@
+@startuml
+User -> LruCache: get(key)
+LruCache -> HashMap :get(key)
+LruCache <-- HashMap :return node
+LruCache -> DoubleLinkedList :remove_node(node)
+LruCache <-- DoubleLinkedList :return True
+LruCache -> DoubleLinkedList :insert_node_at_front(node)
+LruCache <-- DoubleLinkedList :return True
+LruCache -> Node :get_value()
+LruCache <-- Node :return value
+User <-- LruCache: return value
+@enduml

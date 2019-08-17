@@ -1,0 +1,55 @@
+@startuml
+
+class Node {
+  Obj value
+  Obj key
+  Node next
+  Node previous
+
+  set_value(Obj)
+  Obj get_value()
+  set_key(Obj)
+  Obj get_key()
+  set_next(Node)
+  Node get_next()
+  set_previous(Node)
+  Node get_previous()
+}
+
+class DoubleLinkedList {
+  int size
+  Node head
+  Node tail
+
+  int size()
+  bool insert_node_at_front(Node)
+  bool insert_node(Node)
+  bool remove_node(Node)
+  Node remove_last_element()
+  bool insert_at_front(Obj)
+  bool insert(Obj)
+  Obj find_value(Obj):
+}
+
+class HashMap {
+  DoubleLinkedList[] buckets
+  int capacity
+  int size
+
+  bool put(Key, Value)
+  Value get(Key)
+  bool remove(Key)
+}
+
+class LruCache {
+  int capacity
+  DoubleLinkedList dll
+  HashMap hm
+
+  int capacity()
+  int size()
+  Value get(Key)
+  bool set(Key, Value)
+}
+
+@enduml
