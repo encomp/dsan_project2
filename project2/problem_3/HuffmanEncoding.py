@@ -21,11 +21,11 @@ class HuffmanEncoding:
         if data is None or len(data) == 0:
             return None
         self.__char_to_code = {}
-        counters = self.__letter_counter(data.upper())
+        counters = self.__letter_counter(data)
         hc = self.__sorted_frequencies(counters)
         self.__ht = self.__build_tree(hc)
         self.__build_code(self.__ht.get_root(), '', self.__char_to_code)
-        return self.__econde_input(data.upper(), self.__char_to_code)
+        return self.__econde_input(data, self.__char_to_code)
 
     def __letter_counter(self, data):
         letter_counter = {}
