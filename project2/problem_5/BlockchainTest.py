@@ -1,4 +1,5 @@
 import unittest
+
 from project2.problem_5.Blockchain import Blockchain
 
 
@@ -26,10 +27,24 @@ class BlockchainTest(unittest.TestCase):
             self.assertEqual(item.get_data(), self.__elements[i])
             i += 1
         self.assertEqual(self.__blockchain.size(), 2)
+        print(self.__blockchain)
 
     def test_add_none_element_blockchain(self):
         self.assertFalse(self.__blockchain.add(None))
         self.assertEqual(self.__blockchain.size(), 0)
+
+    def test_add_few_element_blockchain(self):
+        elements = ["Hola", "Mundo", "Hello", "World", "Bonjour", "le monde", "Hallo", "Welt"]
+        for element in elements:
+            self.assertTrue(self.__blockchain.add(element))
+
+        i = 0
+        for item in self.__blockchain:
+            self.assertEqual(item.get_data(), elements[i])
+            i += 1
+        self.assertEqual(self.__blockchain.size(), 8)
+        print(self.__blockchain)
+
 
 if __name__ == '__main__':
     unittest.main()
