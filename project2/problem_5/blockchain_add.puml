@@ -1,0 +1,22 @@
+@startuml
+User -> Blockchain: add(data)
+Blockchain -> DoubleLinkedList :size()
+Blockchain <-- DoubleLinkedList :return size > 0
+Blockchain -> Block :Block(data, prior_hash)
+Block -> datetime :utcnow()
+Block <-- datetime: return utcnow
+Block -> Block :set_timestamp(utcnow)
+Block -> Block :set_data(data)
+Block -> Block :set_previous_hash(prior_hash)
+Block -> hashlib :sha256()
+Block <-- hashlib : return sha1
+Block -> sha1 :update(data)
+Block -> sha1 :hexdigest()
+Block <-- sha1 :return hexdigest
+Block -> Block :set_hash(hexdigest)
+Blockchain <-- Block :return block
+Blockchain --> Blockchain : set_prior_block(block)
+Blockchain -> DoubleLinkedList :insert(block)
+Blockchain <-- DoubleLinkedList :return True
+User <-- Blockchain :return True
+@enduml

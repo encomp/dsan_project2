@@ -1,13 +1,28 @@
 ### PROBLEM #5
 
 ### Design
-The find files with specific suffix was design as a recursive function that perform a recursive search on the 
-subdirectories of a given path. The function returns a list of paths if the provided file suffix is found.
+A Blockchain is a sequential chain of records, similar to a linked list. Each block contains some information and how it
+is connected related to the other blocks in the chain. Each block contains a cryptographic hash of the previous block, a
+timestamp, and transaction data. For our blockchain we will be using a SHA-256 hash, the Greenwich Mean Time when the 
+block was created, and text strings as the data.
+
+![blockchain]
+
+[blockchain]: blockchain.png
+
+#### Add data to the blockchain
+To add an element on the blockchain is done as follow:
+
+![blockchain_add]
+
+[blockchain_add]: blockchain_add.png
 
 ### Space Complexity
-The space of this problem is O(1). The reason being is that in only uses a single array to stored all the matching paths
-of the given suffix.
+The space of this problem is O(N). The reason being is that every element will be wrapped into a Block object and 
+later inserted on a double linked list.
 
 ### Running Time Complexity
-The running time complexity for the find files recursive function is O(N). Since in only traverse once the 
-subdirectories of the given path.
+The running time complexity are as follow:
+
+* Add an element O(1)
+* Print the elements in the blockchain O(N)
