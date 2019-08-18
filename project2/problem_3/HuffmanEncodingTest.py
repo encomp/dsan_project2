@@ -34,5 +34,13 @@ class HuffmanEncodingTest(unittest.TestCase):
         decoded = self.__encoder.huffman_decoding("001011101110")
         self.assertIsNone(decoded)
 
+    def test_encode_decode_tree(self):
+        encoded = self.__encoder.huffman_encoding("AAA")
+        self.assertEqual(encoded, "000")
+
+        decoded = self.__encoder.huffman_decoding("000")
+        self.assertEqual(decoded, "aaa".upper())
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -45,6 +45,7 @@ class HuffmanEncoding:
         return pq
 
     def __build_tree(self, huffman_codes):
+        nodes = 0
         while huffman_codes.qsize() > 1:
             left = huffman_codes.queue.pop(0)
             right = huffman_codes.queue.pop(0)
@@ -52,10 +53,18 @@ class HuffmanEncoding:
             parent.set_left(left)
             parent.set_right(right)
             huffman_codes.put(parent)
+            nodes += 1
+        if nodes == 0 and huffman_codes.qsize() == 1:
+            left = huffman_codes.queue.pop(0)
+            parent = HuffmanNode('0', left.get_frequency() + 1)
+            parent.set_left(left)
+            huffman_codes.put(parent)
         bt = BinaryTree(huffman_codes.queue.pop())
         return bt
 
     def __build_code(self, huffman_node, s, char_to_code):
+        if huffman_node is None:
+            return
         if not huffman_node.is_leaf():
             self.__build_code(huffman_node.get_left(), s + '0', char_to_code)
             self.__build_code(huffman_node.get_right(), s + '1', char_to_code)
