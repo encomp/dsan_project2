@@ -1,0 +1,45 @@
+@startuml
+class TreeNode {
+ Obj value
+ TreeNode left
+ TreeNode right
+
+ bool is_leaf()
+ Obj get_value()
+ void set_left(Obj)
+ TreeNode get_left()
+ void set_right(Obj)
+ TreeNode get_right()
+}
+
+class HuffmanNode {
+ String letter
+ int frequency
+ String code
+
+ String get_letter()
+ int get_frequency()
+ String get_code()
+ void set_code(String)
+}
+
+class BinaryTree {
+  TreeNode root
+  int size
+
+  int size()
+  bool insert(Obj)
+}
+
+class HuffmanEncoding {
+ BinaryTree ht
+ HashMap char_to_code
+
+ String huffman_encoding(String)
+ String huffman_decoding(String)
+ void set_huffman_tree(BinaryTree)
+ BinaryTree get_huffman_tree()
+}
+
+TreeNode <|-- HuffmanNode
+@enduml
