@@ -19,7 +19,7 @@ class LruCache:
 
     # Retrieve item from provided key. Return -1 if nonexistent.
     def get(self, key):
-        if key is not None:
+        if key is not None and self.__verify_capacity():
             node = self.__hm.get(key)
             # Move the node to the top on the double linked list
             if node is not None:
@@ -30,7 +30,7 @@ class LruCache:
 
     # Set the value if the key is not present in the problem_1. If the problem_1 is at capacity remove the oldest item.
     def set(self, key, value):
-        if key is not None:
+        if key is not None and self.__verify_capacity():
             # if the problem_1 is at capacity remove the oldest item
             if self.size() == self.capacity():
                 node = self.__dll.remove_last_element()
@@ -48,6 +48,9 @@ class LruCache:
             self.__dll.insert_node_at_front(node)
             return True
         return False
+
+    def __verify_capacity(self):
+        return self.__hm.size() <= self.capacity() != 0
 
     def __repr__(self):
         return "LRU Cache:\n\t{}\n\t{}".format(self.__hm, self.__dll)
